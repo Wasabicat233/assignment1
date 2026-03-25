@@ -132,4 +132,8 @@ class Assignment1:
             # Both semaphores acquired
             print(f"Machine {id} will proceed")
 
-        
+        # Write code here for postRequest, i.e., after inserting the print request
+        def postRequest(self, id):
+            print(f"Machine {id} Releasing binary semaphore")
+            # Release the binary semaphore
+            self.outer.binary.release()
