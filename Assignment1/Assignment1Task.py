@@ -89,7 +89,7 @@ class Assignment1:
             self.outer.binary.release()
             # Increment the semaphore count so that machines can send requests
             self.outer.semaphore.release()
-            
+
     # Machine class
     class machineThread(threading.Thread):
         def __init__(self, machineID, outer):
@@ -104,6 +104,12 @@ class Assignment1:
                 # Machine wakes up and sends a print request
                 # Write code here
                 self.printRequest(self.machineID)
+                 # Check if it is safe to send a request by acquiring semaphores
+                self.isRequestSafe(self.machineID)
+                # Both semaphores have been acquired, now send a print request
+                self.printRequest(self.machineID)
+                # Release the binary semaphore after inserting the print request
+                self.postRequest(self.machineID)
                 
         def machineSleep(self):
             sleepSeconds = random.randint(1, self.outer.MAX_MACHINE_SLEEP)
