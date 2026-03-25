@@ -27,19 +27,10 @@ class Assignment1:
     def startSimulation(self):
         # Create Machine and Printer threads
         # Write code here
-        for i in range (self.NUM_MACHINES):
-            t = self.machineThread(i,self)
-            self.mThreads.append(t)
-
-        for i in range (self.NUM_PRINTERS):
-            t = self.printerThread(i,self)
-            self.pThreads.append(t)
+        
         # Start all the threads
         # Write code here
-        for t in self.mThreads:
-            t.start()
-        for t in self.pThreads:
-            t.start()
+        
         # Let the simulation run for some time
         time.sleep(self.SIMULATION_TIME)
 
@@ -48,8 +39,7 @@ class Assignment1:
 
         # Wait until all printer threads finish by joining them
         # Write code here
-        for t in self.pThreads:
-            t.join()
+        
         print("Simulation finished.")
         # We won't join machine threads as they may be in busy waiting.
         # Flush output and exit.
@@ -77,12 +67,13 @@ class Assignment1:
             print(f"Printer ID: {printerID} : now available")
             #Write code here for Binary and counting Semaphore
             # Acquire the binary semaphore to ensure mutual exclusion
-
+        
             # Print from the queue
             self.outer.print_list.queuePrint(printerID)
             # Release the binary semaphore
-           
+            self.outer.binary.release()
             # Increment the semaphore count so that machines can send requests
+            self.outer.semaphore.release()
 
 
     # Machine class
