@@ -24,11 +24,12 @@ class Assignment1:
         # Create Machine and Printer threads
         # Write code here
         for i in range (self.NUM_MACHINES):
-            
+            t = self.machineThread(i,self)
+            self.mThreads.append(t)
 
         # Start all the threads
         # Write code here
-
+        
         # Let the simulation run for some time
         time.sleep(self.SIMULATION_TIME)
 
