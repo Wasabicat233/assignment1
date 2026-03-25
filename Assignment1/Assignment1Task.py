@@ -103,7 +103,6 @@ class Assignment1:
                 self.machineSleep()
                 # Machine wakes up and sends a print request
                 # Write code here
-                self.printRequest(self.machineID)
                  # Check if it is safe to send a request by acquiring semaphores
                 self.isRequestSafe(self.machineID)
                 # Both semaphores have been acquired, now send a print request
