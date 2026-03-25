@@ -23,7 +23,9 @@ class Assignment1:
     def startSimulation(self):
         # Create Machine and Printer threads
         # Write code here
+        for i in range (self.NUM_MACHINES):
             
+
         # Start all the threads
         # Write code here
 
