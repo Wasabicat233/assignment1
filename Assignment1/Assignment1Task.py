@@ -54,6 +54,11 @@ class Assignment1:
         for t in self.pThreads:
             t.join()
 
+        print("Simulation finished.")
+        # We won't join machine threads as they may be in busy waiting.
+        # Flush output and exit.
+
+
     # Printer class
     class printerThread(threading.Thread):
         def __init__(self, printerID, outer):
